@@ -3,9 +3,10 @@ import { FormsModule } from '@angular/forms';
 
 import { Student } from './models/student';
 import { StudentService } from './services/student';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [FormsModule],
+  imports: [FormsModule,RouterOutlet],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

@@ -1,0 +1,138 @@
+<div class="products-container">
+
+  <h1>Product Management</h1>
+
+  <form (ngSubmit)="saveProduct()">
+
+    <input
+      type="text"
+      [(ngModel)]="product.name"
+      name="name"
+      placeholder="Product Name"
+    />
+
+    <input
+      type="text"
+      [(ngModel)]="product.description"
+      name="description"
+      placeholder="Description"
+    />
+
+    <input
+      type="number"
+      [(ngModel)]="product.price"
+      name="price"
+      placeholder="Price"
+    />
+
+    <input
+      type="number"
+      [(ngModel)]="product.quantity"
+      name="quantity"
+      placeholder="Quantity"
+    />
+
+    <input
+      type="text"
+      [(ngModel)]="product.category"
+      name="category"
+      placeholder="Category"
+    />
+
+    <select
+      [(ngModel)]="product.status"
+      name="status">
+
+      <option value="Available">Available</option>
+      <option value="Out of Stock">Out of Stock</option>
+
+    </select>
+
+    <button type="submit">
+      {{ editing ? 'Update Product' : 'Add Product' }}
+    </button>
+
+    @if (editing) {
+
+      <button
+        type="button"
+        (click)="cancelEdit()">
+
+        Cancel
+
+      </button>
+
+    }
+
+  </form>
+
+  <hr>
+
+  <h2>Products</h2>
+
+  <table>
+
+    <thead>
+
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      @for (product of products; track product.id) {
+
+        <tr>
+
+          <td>{{ product.id }}</td>
+
+          <td>{{ product.name }}</td>
+
+          <td>{{ product.description }}</td>
+
+          <td>{{ product.price }}</td>
+
+          <td>{{ product.quantity }}</td>
+
+          <td>{{ product.category }}</td>
+
+          <td>{{ product.status }}</td>
+
+          <td>
+
+            <button
+              type="button"
+              (click)="editProduct(product)">
+
+              Edit
+
+            </button>
+
+            <button
+              type="button"
+              (click)="deleteProduct(product.id)">
+
+              Delete
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+</div>
